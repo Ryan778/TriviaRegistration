@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width'>
+    <title>FRHS Remote Trivia Night</title>
+    <!-- <script>location.href.slice(0, 7) === 'http://' ? location.href = 'https://' + location.href.slice(7) : ''</script> -->
+    <link rel='stylesheet' href='https://static.itsryan.org/materialize/dark.css' />
+    <link href='style.css' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div class='container'>
+    <h1 class='hd-top'>Fossil Ridge Remote</h1>
+    <h1 class='hd-main'>TRIVIA NIGHT!</h1>
+    <hr/>
+    <h3>Team Registration Status</h3>
+    <p><a href='..'><i class='fas fa-chevron-left'></i> Return to Landing Page</a></p>
+    <div id='login-div' style='display: none'>
+      <h4 style='margin-top: 8px'>Please sign in to continue.</h4>
+      <p>Contact us at ryan@itsryan.org if your team needs assistance.</p>
+      <div id='login-infobox' class='infobox'><i class='fas fa-info-circle'></i> Use your Team ID and PIN. Your Team ID is <b>not</b> case sensitive.</div>
+      <div id='login-def' style='display: none'>
+        <div class='input-field inline'>
+          <input id='i_tid' type='text' maxlength='6'>
+          <label for='i_tid'>Team ID</label>
+        </div>
+        <div class='input-field inline'>
+          <input id='i_pin' type='password' maxlength='8'>
+          <label for='i_pin'>Team PIN</label>
+        </div>
+      </div>
+      <div id='login-saved' style='display: none'>
+        <p>If you'd like to sign in as another team instead, <a onclick='signout()'>click here</a>.</p>
+      </div>
+      <button id='btn-signin' class='btn btn-small blue accent-3 waves-effect' style='width: 160px'><span><i class='fas fa-fw fa-sign-in-alt'></i> Sign In</span></button>
+      <br/>
+    </div>
+    <div id='status-div' style='display: none'>
+      <div class='infobox' style='background: #b2fab041'><i class='fas fa-check'></i> You're signed in! <a onclick='signout()'>Sign out</a> when you're done if you're on a shared device.</div>
+      <h3>Welcome, {{teamName}}!</h3>
+      <p>Thanks for registering for Trivia Night! We can't wait to see your team there.<br><span class='light-blue-text text-lighten-3'>Your team is registered as a <b>{{teamType.slice(4)}}</b>.</span></p>
+      <h4>Registration Status</h4>
+      <p>Below, you can find a list of everyone registered as well as their payment status.<br/><b><i class='fas fa-info-circle'></i> Fees are not yet open on SchoolPay. We'll notify you once they are.</b></p>
+      <p class='light-blue-text text-lighten-3'>Fees will be payable on SchoolPay. After paying, please give 3-5 business days for your status to update. Because SchoolPay is not integrated with our system, payments have to be marked off by hand.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email on File</th>
+            <th>Paid?</th>
+          </tr>
+        </thead>
+        <tbody id='tb-status'>
+          <tr v-for='(name, index) in users'>
+            <td>{{index+1}}</td>
+            <td>{{name}} <b v-if='index===0' class='cyan-text text-lighten-2 hl'>Captain</b></td>
+            <td><span v-if='emails[index]!==""'>{{emails[index]}}</span><span class='grey-text' v-else>No Email Provided</span></td>
+            <td><span v-if='paid[index]'><i class='fas fa-check fa-fw green-text'></i> Paid</span><span v-else><i class='fas fa-times fa-fw red-text'></i> Not Paid</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Supplementary Materials</h4>
+      <p>We'll need some additional materials (importantly, a team photo) <b>no later than 24 hours before event night</b>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Instructions</th>
+            <th>Status</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b class='orange-text text-lighten-2 hl'>Required</b> Team Photo</td>
+            <td><a v-on:click='showInstructions(0)'>Open Instructions</a></td>
+            <td><span v-if='photos[0]===false'><i class='fas fa-times fa-fw red-text'></i> Not Submitted</span><span v-else-if='photos[0]===true'><i class='fas fa-check fa-fw green-text'></i> Received, Approved</span></span><span v-else><i class='far fa-hourglass fa-fw lime-text'></i> Received, Pending Approval</span></span></td>
+            <td><span v-if='photos[0]===true' class='grey-text'>Submitted</span><span v-else><a href='https://www.google.com' target='_blank'>Submit Photo</a></span></td>
+          </tr>
+          <tr>
+            <td><b class='light-green-text text-lighten-2 hl'>Optional</b> Team Spirit Photo</td>
+            <td><a v-on:click='showInstructions(1)'>Open Instructions</a></td>
+            <td><span v-if='photos[1]===false'><i class='fas fa-times fa-fw red-text'></i> Not Submitted</span><span v-else-if='photos[1]===true'><i class='fas fa-check fa-fw green-text'></i> Received, Approved</span></span><span v-else><i class='far fa-hourglass fa-fw lime-text'></i> Received, Pending Approval</span></span></td>
+            <td><span v-if='photos[1]===true' class='grey-text'>Submitted</span><span v-else><a href='https://www.google.com' target='_blank'>Submit Photo</a></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Edit Submission</h4>
+      <p>Want to change your team name? Someone had to drop? You can do all that here!<br/><span class='yellow-text text-lighten-3'>Note: While you can drop teammates that have already paid, we <b>can not</b> offer refunds on SchoolPay. However, you <b>can</b> transfer a competitor's payment by changing the name in an already paid "slot". </span><br/><span class='red-text text-lighten-3'>Note: If your entire team would like to withdraw, you'll need to contact us directly.</span></p>
+      <p><b><a v-on:click='openEditURL()'>Edit Registration</a></b> <i>(Make sure to press "Submit" on the form when you're done! Reload this page afterwards to make sure it went through.)</i></p>
+    </div>
+    <hr/>
+    <p>&copy; 2021 Ryan Zhang <span class='right'><a href='https://www.itsryan.org'>ItsRyan.org</a> • <a href='https://github.com/Ryan778/OpenTrivia' target='_blank'>OpenTrivia on GitHub</a></span></p>
+    <br/>
+    </div>
+    <div id='modal-photo' class='modal'>
+      <div class='modal-content'>
+        <h2>Team Photo / Team Spirit Photo</h2>
+        <p>Please submit <b>one</b> regular team photo and optionally <b>one</b> fun spirit photo <b>before</b> event night.</p>
+        <p>
+          For your regular team photo: 
+          <ul class='browser-default'>
+            <li>Image must be square, and preferably in JPG format</li>
+            <li>Must show all of your team members (if your team can't meet up in person, stitch 3-5 individual photos into one collage)</li>
+            <li>Should be unedited or w/ minimal edits (i.e., to combine photos into a collage)</li>
+          </ul>
+        </p>
+        <p>
+          For your optional spirit photo:  
+          <ul class='browser-default'>
+            <li>Should still preferably be in JPG format, but does <b>not</b> have to be square</li>
+            <li>Must show all of your team members (collages are fine)</li>
+            <li>Be creative! Photoshop, creative edits, and costumes are encouraged!</li>
+            <li>By submitting a spirit photo, you'll be eligible for various spirit prizes.</li>
+          </ul>
+        </p>
+      </div>
+      <div class='modal-footer'>
+        <button class='modal-close blue white-text right waves-effect btn-flat'>Close</button>
+      </div>
+    </div>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js' integrity='sha512-UwcC/iaz5ziHX7V6LjSKaXgCuRRqbTp1QHpbOJ4l1nw2/boCfZ2KlFIqBUA/uRVF0onbREnY9do8rM/uT/ilqw==' crossorigin='anonymous'></script>
+    <script defer src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js' integrity='sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q==' crossorigin='anonymous'></script>
+    <script defer src='https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js' integrity='sha256-FZ8KwMj1F6qnNgA7bhPryVm19xKduH5OVr8u7I1tAtc=' crossorigin='anonymous'></script>
+    <script defer src='status.js'></script>
+  </body>
+</html>

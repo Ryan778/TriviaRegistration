@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+
+html{
+  cursor: default; 
+  color: #fff;
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+h1, h2, h3, #login-div {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hd-top, .hd-main{
+  line-height: 0.2; 
+  font-family: 'Goldman', 'Roboto', Courier, monospace;
+}
+
+.hd-top {
+  margin: 0; 
+  padding-left: 6px; 
+  color: #fff; 
+  font-size: 2.4em; 
+  line-height: 0.8;
+}
+
+.hd-main {
+  margin: 0; 
+  color: #999aea; 
+  font-size: 4.8em; 
+  line-height: 0.8;
+  text-shadow: 3px 3px 0 #512dee; 
+}
+
+body{
+  background: url(bk2.jpg); 
+  background-attachment: fixed; 
+  background-size: cover; 
+  background-position: center; 
+}
+
+::selection{
+  background: #90b5da;
+}
+
+.container{
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  background: rgba(12, 12, 12, 0.74); 
+  backdrop-filter: blur(6px);
+  padding: 24px 12px 4px; 
+  color: #fff; 
+}
+
+#st-main{
+  display: none; 
+}
+
+hr{
+  border: none; 
+  border-bottom: 1px solid #555;
+}
+
+::-webkit-scrollbar{
+  background-color: rgb(29, 29, 29);
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgb(77, 81, 104);
+}
+
+button.btn{
+  width: 240px;
+  height: 40px;
+  margin-bottom: 8px;
+  text-transform: none; 
+  font-size: 16px;
+}
+
+h1{
+  font-size: 2.6em; 
+}
+
+h2{
+  font-size: 2.2em;
+}
+
+h3{
+  font-size: 1.9em;
+}
+
+h4{
+  font-size: 1.6em;
+}
+
+h5{
+  font-size: 1.4em;
+}
+
+h6{
+  font-size: 1.2em;
+}
+
+ul li{
+  margin-bottom: 4px; 
+  font-size: 16px; 
+}
+
+#st-pbouter{
+  width: 100%; 
+  height: 14px;
+  position: relative;
+  background: #5555559f;
+  max-width: 430px;
+}
+
+#st-pbinner{
+  width: 0%; 
+  height: 14px;
+  position: absolute; 
+  background: #615ff19f;
+  transition: width 0.8s; 
+}
+
+/* Status page exclusive */
+#login-div{
+  border: 1px solid #fff;
+  padding: 0 8px;
+  background: #8e86ff1f;
+}
+
+.infobox{
+  padding: 4px 8px;
+  background: #b0dcfa41;
+}
+
+.hl{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+  background: #9cb3c241;
+}
+
+td, th{
+  padding: 8px 6px;
+}
+
+tr{
+  border-bottom: 1px solid #ffffff3d;
+}
+
+thead {
+  background: #c3e2ff29;
+}
+
+thead tr{
+  border-bottom: 1px solid #fff;
+}
