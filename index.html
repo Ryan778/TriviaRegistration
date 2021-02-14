@@ -4,22 +4,32 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width'>
     <title>FRHS Remote Trivia Night</title>
-    <!-- <script>location.href.slice(0, 7) === 'http://' ? location.href = 'https://' + location.href.slice(7) : ''</script> -->
+    <script>location.href.slice(0, 7) === 'http://' ? location.href = 'https://' + location.href.slice(7) : ''</script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' />
     <link href='style.css' rel='stylesheet' type='text/css' />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZNJMZV1VV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-7ZNJMZV1VV');
+    </script>
   </head>
   <body>
     <div class='container'>
-    <h1 class='hd-top'>Fossil Ridge Remote</h1>
-    <h1 class='hd-main'>TRIVIA NIGHT!</h1>
+    <h1 class='hd-top'>FOSSIL RIDGE REMOTE</h1>
+    <h1 class='hd-main'>TRIVIA NIGHT</h1>
     <hr/>
-    <h3><b>Saturday March 13th(??), 2021</b> • 6:30p - 9:30p</h3>
+    <h3><b>Saturday April 3rd, 2021</b> • 6:30p - 9:30p</h3>
     <h4><b>All Virtual</b> • At your house, at your friend's house, up to you!</h4>
     <p>Join us in teams of 3-5 for a fun and exciting night, all while supporting the Make-a-Wish Foundation!</p>
     <div class='row' style='text-align: center;'>
       <div class='col s12 m6'>
         <h4>New team?</h4>
-        <a id='btn-lnk' target='_blank' href='https://docs.google.com/forms/d/e/1FAIpQLScxkdSScsVJ0b4X2L01vxUwJCAj_pLTEdr_GLlKgmR9Buj5sA/viewform'><button id='btn' class='btn green waves-effect waves-light'>Sign Up Now!</button></a>
+        <!-- <a id='btn-lnk' target='_blank' href='https://docs.google.com/forms/d/e/1FAIpQLScxkdSScsVJ0b4X2L01vxUwJCAj_pLTEdr_GLlKgmR9Buj5sA/viewform'><button id='btn' class='btn green waves-effect waves-light'>Sign Up Now!</button></a> -->
+        <button id='btn' class='btn grey waves-light'>Opens Late February</button>
         <br/><i>First come first serve, spots are limited!</i>
       </div>
       <div class='col s12 m6'>
@@ -40,14 +50,22 @@
       </div>
       <p>Currently, there are <b><span id='st-teams'>...</span></b>. That's <b id='st-perc'></b> of our capacity! </p>
     </div>
-    <h2>Details</h2>
-    <p><b>What is it?</b> A trivia night competition / fundraiser, open to everyone! Students, teachers, parents, and Fossil alumni are all encouraged to participate. Due to the COVID pandemic, the event will be fully virtual on Zoom.</p>
-    <p><b>How much does it cost?</b> $6/participant (NOT per team). Proceeds will be donated to the Make-a-Wish Foundation. </p>
+    <hr/>
+    <h3>Details + FAQ</h3>
+    <p><i>Have questions? We have answers.</i></p>
+    <p><b>What is it?</b> A trivia night competition + fundraiser, open to everyone! Due to the COVID pandemic, the event will be fully virtual on Zoom. This time around, we'll feature head to head rounds, new minigames, and more surprises to make our sixth Fossil trivia night the best one yet!</p>
+    <p><b>How much does it cost?</b></p>
+    <ul class='browser-default'>
+      <li><b>Early Bird: $6/participant</b> (if paid by 11PM 3/12).</li>
+      <li><b>Regular: $9/participant</b> (must be paid by 11PM 4/2).</li>
+      <li>A small portion (&lt;10%) of proceeds may be used to offset costs and/or prizes. All other proceeds (&geq;90%) will be donated to the Make-a-Wish Foundation. </li>
+    </ul>
     <p><b>How many participants can there be on a team?</b> 4&PlusMinus;1 (3-5) participants.</p>
-    <p><b>Are there prizes?</b> Yes! All teams qualify for prizes this time around.</p>
+    <p><b>Who can participate?</b> <u>Anyone</u> affiliated with Fossil Ridge (students, teachers, parents, and Fossil alumni) are welcome and encouruaged to participate.</p>
+    <p><b>Are there prizes?</b> Yes! All teams qualify for prizes this time around. We will not give details until event night, but we will say that they're significantly better than our last event.</p>
     <p><b>I still have more questions.</b> Send an email to ryan [at] itsryan.org and we'll respond ASAP. If applicable, you can also ask your honor society board.</p>
     <hr/>
-    <p style='text-align: center'>&copy; 2021 Ryan Zhang • <a href='https://www.itsryan.org'>itsryan.org</a></p>
+    <p>&copy; 2021 Ryan Zhang <span class='right'><a href='https://www.itsryan.org'>ItsRyan.org</a> • <a href='https://github.com/Ryan778/OpenTrivia' target='_blank'>OpenTrivia on GitHub</a></span></p>
     <br/>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js' integrity='sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q==' crossorigin='anonymous'></script>
     <!-- <script src='script.js'></script> -->

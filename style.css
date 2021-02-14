@@ -1,12 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,400&display=swap');
+
+@font-face {
+  font-family: 'Lovelo'; 
+  src: url(Lovelo-LineLight.woff2) format('woff2'); 
+}
 
 html{
   cursor: default; 
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Helvetica Neue', sans-serif;
   color: #fff;
+}
+
+a {
+  color: #4fc3f7;
 }
 
 a:hover {
   cursor: pointer;
+  color: #73cffa;
   text-decoration: underline;
 }
 
@@ -15,45 +26,68 @@ h1, h2, h3, #login-div {
   -webkit-user-select: none;
 }
 
-.hd-top, .hd-main{
-  line-height: 0.2; 
-  font-family: 'Goldman', 'Roboto', Courier, monospace;
-}
-
 .hd-top {
   margin: 0; 
-  padding-left: 6px; 
+  /* padding-left: 6px;  */
   color: #fff; 
+  font-family: 'Roboto', Courier, monospace;
   font-size: 2.4em; 
-  line-height: 0.8;
+  line-height: 1.2;
+  font-weight: 100;
 }
 
 .hd-main {
   margin: 0; 
-  color: #999aea; 
+  color: #bac3f8; 
   font-size: 4.8em; 
-  line-height: 0.8;
-  text-shadow: 3px 3px 0 #512dee; 
+  line-height: 0.9;
+  text-shadow: 0px 0px 6px #6f52f3; 
+  font-family: 'Lovelo', Courier, monospace;
 }
 
-body{
-  background: url(bk2.jpg); 
+/* body{
+  background: url(https://via.placeholder.com/1920x1080?text=Website%20Background); 
   background-attachment: fixed; 
   background-size: cover; 
   background-position: center; 
+} */
+
+body{
+  background: #144568;
 }
 
 ::selection{
   background: #90b5da;
 }
 
-.container{
-  margin-top: 20px; 
-  margin-bottom: 20px; 
-  background: rgba(12, 12, 12, 0.74); 
-  backdrop-filter: blur(6px);
-  padding: 24px 12px 4px; 
+body {
+  background: #0D2C42;
+}
+
+.container {
+  margin-top: 10px; 
+  margin-bottom: 15px; 
+  background: #0D2C42; 
+  padding: 12px 6px 2px; 
   color: #fff; 
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    background: #144568;
+    background-image: url(background.svg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+  .container{
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    background: #144568; 
+    /* background: #0D2C42;  */
+    padding: 24px 12px 4px; 
+    color: #fff; 
+  }
 }
 
 #st-main{
@@ -62,7 +96,7 @@ body{
 
 hr{
   border: none; 
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #fff;
 }
 
 ::-webkit-scrollbar{
@@ -79,36 +113,40 @@ button.btn{
   height: 40px;
   margin-bottom: 8px;
   text-transform: none; 
-  font-size: 16px;
+  font-size: 1.0rem;
 }
 
 h1{
-  font-size: 2.6em; 
+  font-size: 2.6rem; 
 }
 
 h2{
-  font-size: 2.2em;
+  font-size: 2.2rem;
 }
 
 h3{
-  font-size: 1.9em;
+  font-size: 1.9rem;
 }
 
 h4{
-  font-size: 1.6em;
+  font-size: 1.6rem;
 }
 
 h5{
-  font-size: 1.4em;
+  font-size: 1.4rem;
 }
 
 h6{
-  font-size: 1.2em;
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 1.0rem; 
 }
 
 ul li{
   margin-bottom: 4px; 
-  font-size: 16px; 
+  font-size: 1.0rem; 
 }
 
 #st-pbouter{
