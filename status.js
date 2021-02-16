@@ -1,7 +1,18 @@
 let vueObj, savedCreds; 
 
 function init() {
-  if(localStorage.getItem('tn-creds')) {
+  if (new URLSearchParams(location.search).get('auth')) {
+    try {
+      let creds = atob(new URLSearchParams(location.search).get('auth')).split('/'); 
+      savedCreds = `tid=${creds[0]}&pin=${creds[1]}`; 
+      auth(); 
+      document.getElementById('login-infobox').innerHTML= `<i class='fas fa-key'></i> Attempting to sign you in...`; 
+    } catch (e) {
+      document.getElementById('login-infobox').innerHTML= `<i class='fas fa-exclamation-triangle'></i> We were unable to sign you in automatically. Please sign in manually.`; 
+      document.getElementById('login-def').style.display = 'block';
+      document.getElementById('i_tid').focus(); 
+    }
+  } else if(localStorage.getItem('tn-creds')) {
     try {
       let creds = atob(localStorage.getItem('tn-creds')).split('|'); 
       document.getElementById('login-infobox').innerHTML= `<i class='fas fa-key'></i> Credentials have been saved for <b>${creds[0]}</b>. If this is you, simply select "Sign In" to continue.`; 
@@ -63,7 +74,9 @@ async function auth() {
       }
     }); 
   } else {
-    document.getElementById('login-infobox').innerHTML = `<i class='fas fa-exclamation-triangle'></i> ${resp.msg}`;
+    document.getElementById('login-saved').style.display = 'none';
+    document.getElementById('login-def').style.display = 'block';
+    document.getElementById('login-infobox').innerHTML = `<i class='fas fa-exclamation-triangle'></i> ${resp.msg}${savedCreds?' Try signing in manually.':''}`;
     document.getElementById('login-infobox').style.backgroundColor = '#ff684341';
   }
 }
